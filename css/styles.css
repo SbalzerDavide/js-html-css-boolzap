@@ -5,6 +5,50 @@
 }
 
 body{
-    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(
+        to bottom,
+        #009688 0%,
+        #009688 15%,
+        #dcdbd1 15%,
+        #d2dbdb 100%
+    );
     font-family: 'Roboto', sans-serif;
 }
+
+#app{
+    display: flex;
+    height: 90%;
+    width: 75%;
+    min-width: 900px;
+    background-color: #fff;
+}
+
+.side{
+    flex-basis: 35%;
+    background-color: yellow;
+
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 65%;
+    background-color: yellowgreen;
+}
+
+.main-header,
+.main-footer{
+    padding:20px
+}
+
+.main-content{
+    flex-grow: 1;
+    overflow: auto;
+}
+
+
+
