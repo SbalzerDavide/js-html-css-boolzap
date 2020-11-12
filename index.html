@@ -11,7 +11,11 @@
 </head>
 <body>
     <div id="app">
+
+        <!-- sidebar -->
         <aside class="side">
+
+            <!-- header -->
             <div class="side-header">
                 <div class="user">
                     <img :src="('./img/avatar') + user.avatar + '.jpg'" alt="user">
@@ -28,8 +32,48 @@
                         <li><i class="fas fa-ellipsis-v"></i></li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="notification">
+                <div class="icon">
+                    <i class="fas fa-bell-slash"></i>
+                </div>
+                <div class="not-text">
+                    <h4>
+                        Ricevi notifiche di nuovi messaggi
+                    </h4>
+                    <small>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </small>
+                </div>
+            </div>
+
+            <div class="search">
+                <div class="box">
+                    <li><i class="fas fa-search"></i></li>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
+            </div>
+
+            <div class="contacts">
+                <div 
+                class="contact"
+                v-for='(item, index) in contacts'
+                >
+                    <img :src="('./img/avatar') + contacts[index].avatar + '.jpg'" alt="user">
+                    <div class="user-name">
+                        <h4>
+                            {{ contacts[index].name }}
+                        </h4>
+                    </div>
+                </div>
 
             </div>
+
+
+
+
+
     
         </aside>
     
@@ -60,7 +104,9 @@
             </div>
 
             <div class="main-footer">
-                footer
+                <i class="far fa-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio">
+                <i class="fas fa-microphone"></i>
             </div>
     
         </main>

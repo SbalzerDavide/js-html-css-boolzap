@@ -94,6 +94,96 @@ var app = new Vue({
                     }
                 ],
             },
+            {
+                name: 'Nicola',
+                avatar: '_5',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Hai portato a spasso il cane?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Ricordati di dargli da mangiare',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 16:15:22',
+                        message: 'Tutto fatto!',
+                        status: 'received'
+                    }
+                ],
+            },
+            {
+                name: 'Simone',
+                avatar: '_6',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Hai portato a spasso il cane?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Ricordati di dargli da mangiare',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 16:15:22',
+                        message: 'Tutto fatto!',
+                        status: 'received'
+                    }
+                ],
+            },
+            {
+                name: 'Francesco',
+                avatar: '_7',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Hai portato a spasso il cane?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Ricordati di dargli da mangiare',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 16:15:22',
+                        message: 'Tutto fatto!',
+                        status: 'received'
+                    }
+                ],
+
+            },
+            {
+                name: 'Marco',
+                avatar: '_8',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Hai portato a spasso il cane?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Ricordati di dargli da mangiare',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 16:15:22',
+                        message: 'Tutto fatto!',
+                        status: 'received'
+                    }
+                ],
+
+            }
         ]
     },
     methods: {}
