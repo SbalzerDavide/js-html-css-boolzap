@@ -5,23 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'/>
     <link rel="stylesheet" href="./css/styles.css">
     <title>Boolzap</title>
 </head>
 <body>
     <div id="app">
         <aside class="side">
+            <div class="side-header">
+                <div class="user">
+                    <img :src="('./img/avatar') + user.avatar + '.jpg'" alt="user">
+                    <div class="user-name">
+                        <h4>
+                            {{ user.name }}
+                        </h4>
+                    </div>
+                </div>
+                <div class="action">
+                    <ul>
+                        <li><i class="fas fa-circle-notch"></i></li>
+                        <li><i class="fas fa-comment-alt"></i></li>
+                        <li><i class="fas fa-ellipsis-v"></i></li>
+                    </ul>
+                </div>
+
+            </div>
     
         </aside>
     
         <!-- main -->
         <main>
             <div class="main-header">
-                header
+                <div class="user">
+                    <img src="img/avatar_1.jpg" alt="">
+                    <div class="user-name">
+                        <h4>
+                            Michele
+                        </h4>
+                        <small>
+                            Ultimo accesso oggi alle 10.35
+                        </small>
+                    </div>
+                </div>
+                <div class="action">
+                    <ul>
+                        <li><i class="fas fa-search"></i></li>
+                        <li><i class="fas fa-paperclip"></i></li>
+                        <li><i class="fas fa-ellipsis-v"></i></li>
+                    </ul>
+                </div>
             </div>
 
             <div class="main-content">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam aut consequatur non laborum officiis magni? Atque eligendi totam fugiat rem placeat minima aut, eos quas, officia, similique tenetur voluptatibus dolorem!
             </div>
 
             <div class="main-footer">
