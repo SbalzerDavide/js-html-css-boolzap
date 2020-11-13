@@ -119,9 +119,6 @@ input:focus{
     padding: 5px;
 }
 
-/* .search:focus{
-    color: violet;
-} */
 
 .search .box{
     display: flex;
@@ -130,12 +127,6 @@ input:focus{
     background-color: #fff;
 }
 
-/* .search .box i{
-    color: #b1b1b1;
-    margin-right: 40px;
-    transition: color .3s,
-                transform .3s;
-} */
 
 .search .box .change-icon{
     position: relative;
@@ -182,34 +173,11 @@ input:focus{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .search .box input{
     width: 85%;
     border: none;
 }
 
-/* .search .box input:focus + li i{
-    color: #264653;
-    transform: scale(1.2);
-} */
 
 /* contact */
 .contacts{
