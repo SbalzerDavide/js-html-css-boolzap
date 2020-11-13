@@ -61,6 +61,7 @@
                 <div 
                 @click='selectChat(index)'
                 class="contact"
+                :class=" index=== actualChat.indiceChat ? 'active' : 'ciao'"
                 v-for='(item, index) in contacts'
                 >
                     <img :src="('./img/avatar') + contacts[index].avatar + '.jpg'" alt="user">

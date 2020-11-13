@@ -196,6 +196,8 @@ var app = new Vue({
     methods: {
         selectChat(index){
             this.actualChat = this.contacts[index];
+            this.actualChat.indiceChat=index;
+            console.log(this.actualChat);
             this.actualMessage = this.actualChat.messages;
         }
     }

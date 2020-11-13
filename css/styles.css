@@ -163,6 +163,15 @@ input:focus{
     transition: background .3s;
 }
 
+.contacts .contact.active{
+    background-color: #dddddd;
+}
+
+.contacts .contact.active:hover{
+    background-color: #dddddd;
+}
+
+
 .contacts .contact:hover{
     background-color: #f5f5f5;
 }
@@ -224,14 +233,14 @@ main{
 .main-content .message h2{
     font-size: 15px;
     font-weight: 400;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .main-content .message .time{
     position: absolute;
     bottom: 5px;
     right: 5px;
-    font-size: 12px;
+    font-size: 10px;
     color: #b1b1b1;
 
 }
