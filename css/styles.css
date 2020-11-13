@@ -119,9 +119,9 @@ input:focus{
     padding: 5px;
 }
 
-.search:focus{
+/* .search:focus{
     color: violet;
-}
+} */
 
 .search .box{
     display: flex;
@@ -130,22 +130,86 @@ input:focus{
     background-color: #fff;
 }
 
-.search .box i{
+/* .search .box i{
     color: #b1b1b1;
     margin-right: 40px;
     transition: color .3s,
                 transform .3s;
+} */
+
+.search .box .change-icon{
+    position: relative;
+    margin-right: 44px;
 }
+
+.search .box .change-icon::after{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% ) rotate(0);
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    content: "\f002";
+    color: #b1b1b1;
+    opacity: 1;
+    transition: transform .3s,
+                opacity .3s;
+}
+
+.search .box .change-icon::before{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% ) rotate(-90deg);
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    content: "\f060";
+    color: #8ddbfc;
+    opacity: 0;
+    transition: transform .3s,
+                opacity .3s;
+
+}
+
+.search .box input:focus + .change-icon::after{
+    opacity: 0;
+    transform: translate( -50%, -50% ) rotate(90deg)
+}
+
+.search .box input:focus + .change-icon::before{
+    opacity: 1;
+    transform: translate( -50%, -50% ) rotate(0)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .search .box input{
     width: 85%;
     border: none;
 }
 
-.search .box input:focus + li i{
+/* .search .box input:focus + li i{
     color: #264653;
     transform: scale(1.2);
-}
+} */
 
 /* contact */
 .contacts{
