@@ -80,7 +80,19 @@
 
             <!-- main header -->
             <div class="main-header">
-                <div class="user">
+                <div v-show="actualChat=== '' " class="user">
+                    <img :src="('./img/avatar') + contacts[0].avatar + '.jpg'" :alt="contacts[0].name">
+                    <div class="user-name">
+                        <h4>
+                            {{ contacts[0].name }}
+                        </h4>
+                        <small>
+                            Ultimo accesso oggi alle 10.35
+                        </small>
+                    </div>
+                </div>
+
+                <div v-show=" actualChat!= '' " class="user">
                     <img :src="`img/avatar${actualChat.avatar}.jpg`" :alt="actualChat.name">
                     <div class="user-name">
                         <h4>
