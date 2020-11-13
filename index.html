@@ -59,6 +59,7 @@
             <!-- contancts -->
             <div class="contacts">
                 <div 
+                @click='selectChat(index)'
                 class="contact"
                 v-for='(item, index) in contacts'
                 >
@@ -79,10 +80,10 @@
             <!-- main header -->
             <div class="main-header">
                 <div class="user">
-                    <img src="img/avatar_1.jpg" alt="">
+                    <img :src="`img/avatar${actualChat.avatar}.jpg`" :alt="actualChat.name">
                     <div class="user-name">
                         <h4>
-                            Michele
+                            {{ actualChat.name }}
                         </h4>
                         <small>
                             Ultimo accesso oggi alle 10.35
@@ -100,6 +101,15 @@
 
             <!-- main content -->
             <div class="main-content">
+                <div
+                v-for="message in actualMessage" 
+                :class="[message.status === 'sent' ? 'sent' : 'received','message']"
+                >
+                    <h2>{{ message.message }}</h2>
+                    <div class="time">{{ message.date }}</div>
+                </div>
+
+
             </div>
 
             <!-- main footer -->
