@@ -185,19 +185,11 @@ var app = new Vue({
 
             }
         ],
-        actualChat:'',
-        actualMessage: [],
-
-        
-            
-        
-
+        actualIndex:0,            
     },
     methods: {
-        selectChat(index){
-            this.actualChat = this.contacts[index];
-            this.actualChat.indexChat=index;
-            this.actualMessage = this.actualChat.messages;
+        takeIndex(index){
+            this.actualIndex = index;
         }
     }
 });

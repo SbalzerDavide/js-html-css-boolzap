@@ -251,19 +251,20 @@ main{
     justify-content: space-around;
     align-items: center;
     height: 50px;
-    padding: 5px 10px;
+    padding: 5px 0;
     background-color: #f3eeea;
     color: #6b7376;
 }
 
 .main-footer i{
     cursor: pointer;
+    margin: 0 20px;
 }
 
 .main-footer input{
+    flex-grow: 1;
     padding: 0 15px;
     height: 40px;
-    width: 90%;
     border: none;
     border-radius: 5px;
 }
