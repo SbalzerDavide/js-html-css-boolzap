@@ -117,25 +117,9 @@
 
             <!-- main footer -->
             <div class="main-footer">
-                <i 
-                class="far fa-smile"
-                @click="isHidden =!isHidden"></i>
-                <input type="text" placeholder="Scrivi un messaggio" 
-                v-model="insertMessage">
+                <i class="far fa-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio">
                 <i class="fas fa-microphone"></i>
-                <div 
-                class="emoji-container"
-                v-if="isHidden"
-                >
-                    <ul>
-                        <li
-                        @click="addEmoji(index)"
-                        v-for="(emoticon, index) in emoji"
-                        >
-                        {{ emoticon }}
-                    </li>
-                    </ul>
-                </div>
             </div>
     
         </main>

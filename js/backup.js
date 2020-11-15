@@ -185,23 +185,11 @@ var app = new Vue({
 
             }
         ],
-        emoji: [
-            '😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊', '😋', '😎', '😍', '😘', '😗', '😙', '😚', '🙂', '🤗', '🤩', '🤔', '🤨', '😐', '😑', '😶','🙄', '😏', '😣', '😥', '😮','🤐', '😯', '😪', '😫', '😴','😛', '😜', '😝', '🤤', '😒','😓', '😔', '😕', '🙃', '🤑'
-        ],
-        actualIndex:0,
-        isHidden: false,
-        insertMessage: '',
+        actualIndex:0,            
     },
     methods: {
         takeIndex(index){
             this.actualIndex = index;
-        },
-        addEmoji(index){
-            let first = this.insertMessage;
-            let second = this.emoji[index];
-            var res = first.concat(second);
-            this.insertMessage = res;
         }
-    },
-
+    }
 });
