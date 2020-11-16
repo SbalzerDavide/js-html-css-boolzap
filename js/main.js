@@ -240,6 +240,8 @@ var app = new Vue({
             );
             this.insertMessage = '';
             setTimeout(this.botMessage, 1000);
+            this.scrollToEnd();
+
         },
         botMessage(){
             this.contacts[this.actualIndex].messages.push(
@@ -249,6 +251,7 @@ var app = new Vue({
                     status: 'received'
                 }
             );
+            this.scrollToEnd();
         },
     },
 
