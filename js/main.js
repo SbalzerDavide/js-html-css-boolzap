@@ -219,9 +219,6 @@ var app = new Vue({
         scrollToEnd(){    	
             let container = this.$el.querySelector(".main-content");
             container.scrollTop = container.scrollHeight - 457;
-            console.log(container.scrollTop);
-            console.log(container.scrollHeight);
-            console.log(height);
         },
         addEmoji(index){
             let first = this.insertMessage;
