@@ -120,7 +120,9 @@
                 <i 
                 class="far fa-smile"
                 @click="isHidden =!isHidden"></i>
-                <input type="text" placeholder="Scrivi un messaggio" 
+                <input type="text" 
+                placeholder="Scrivi un messaggio"
+                @keyup.13="sendMessage"
                 v-model="insertMessage">
                 <i class="fas fa-microphone"></i>
                 <div 
@@ -141,7 +143,7 @@
         </main>
     </div>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="./js/main.js"></script>
 </body>

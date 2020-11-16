@@ -186,11 +186,12 @@ var app = new Vue({
             }
         ],
         emoji: [
-            '😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊', '😋', '😎', '😍', '😘', '😗', '😙', '😚', '🙂', '🤗', '🤩', '🤔', '🤨', '😐', '😑', '😶','🙄', '😏', '😣', '😥', '😮','🤐', '😯', '😪', '😫', '😴','😛', '😜', '😝', '🤤', '😒','😓', '😔', '😕', '🙃', '🤑'
+            '😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊', '😋', '😎', '😍', '😘', '😗', '😙', '😚', '🙂', '🤗', '🤩', '🤔', '🤨', '😐', '😑', '😶', '🙄', '😏', '😣', '😥', '😮', '🤐', '😯', '😪', '😫', '😴', '😛', '😜', '😝', '🤤', '😒', '😓', '😔', '😕', '🙃', '🤑'
         ],
         actualIndex:0,
         isHidden: false,
         insertMessage: '',
+        now: dayjs(), 
     },
     methods: {
         takeIndex(index){
@@ -201,6 +202,30 @@ var app = new Vue({
             let second = this.emoji[index];
             var res = first.concat(second);
             this.insertMessage = res;
+        },
+        sendMessage(){
+            console.log(this.now.format('DD/MM/YYYY HH:mm:ss'));
+            if (this.insertMessage.trim() != '')
+            this.contacts[this.actualIndex].messages.push(
+                {
+                    date: this.now.format('DD/MM/YYYY HH:mm:ss'),
+                    message: this.insertMessage,
+                    status: 'sent'
+                }
+            );
+            this.insertMessage = '';
+            setTimeout(this.botMessage, 1000);
+        },
+        botMessage(){
+            this.contacts[this.actualIndex].messages.push(
+                {
+                    date: this.now.format('DD/MM/YYYY HH:mm:ss'),
+                    message: 'ok',
+                    status: 'received'
+                }
+            );
+
+
         }
     },
 
