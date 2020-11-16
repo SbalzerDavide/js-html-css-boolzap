@@ -220,7 +220,7 @@ var app = new Vue({
             this.contacts[this.actualIndex].messages.push(
                 {
                     date: this.now.format('DD/MM/YYYY HH:mm:ss'),
-                    message: 'ok',
+                    message: 'Ciao sono ' + this.contacts[this.actualIndex].name,
                     status: 'received'
                 }
             );
