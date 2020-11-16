@@ -214,10 +214,6 @@ var app = new Vue({
         },
         showEmoji(){
             this.isHidden = !this.isHidden;
-            setTimeout(() =>{
-                this.scrollToEnd();
-
-            },20)
         },
         scrollToEnd(){    	
             let container = this.$el.querySelector(".main-content");
@@ -242,6 +238,10 @@ var app = new Vue({
                 }
             );
             this.insertMessage = '';
+            setTimeout(() =>{
+                this.scrollToEnd();
+
+            },20)
             setTimeout(this.botMessage, 1000);
             this.scrollToEnd();
         },
