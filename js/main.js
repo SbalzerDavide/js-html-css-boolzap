@@ -214,10 +214,12 @@ var app = new Vue({
         },
         showEmoji(){
             this.isHidden = !this.isHidden;
+            this.scrollToEnd();
         },
-        scrollToEnd(){    	
-            let container = this.$el.querySelector(".main-content");
-            container.scrollTop = container.scrollHeight ;
+        scrollToEnd(){    
+            setTimeout(() =>{
+                this.$refs.container.scrollTop = this.$refs.container.scrollHeight ;
+            },20)
         },
         addEmoji(index){
             let first = this.insertMessage;
@@ -238,12 +240,8 @@ var app = new Vue({
                 }
             );
             this.insertMessage = '';
-            setTimeout(() =>{
-                this.scrollToEnd();
-
-            },20)
-            setTimeout(this.botMessage, 1000);
             this.scrollToEnd();
+            setTimeout(this.botMessage, 1000);
         },
         botMessage(){
             this.contacts[this.actualIndex].messages.push(
@@ -253,9 +251,7 @@ var app = new Vue({
                     status: 'received'
                 }
             );
-            setTimeout(() =>{
-                this.scrollToEnd();
-            },20)
+            this.scrollToEnd();
         },
     },
 
