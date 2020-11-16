@@ -107,7 +107,7 @@
                 <!-- messages -->
                 <div
                 v-for="message in contacts[actualIndex].messages" 
-                :class="[message.status === 'sent' ? 'sent' : 'received','message']"
+                :class="[message.status,'message']"
                 >
                     <h2>{{ message.message }}</h2>
                     <div class="time">{{ message.date }}</div>
@@ -117,26 +117,38 @@
 
             <!-- main footer -->
             <div class="main-footer">
-                <i 
-                class="far fa-smile"
-                @click="isHidden =!isHidden"></i>
-                <input type="text" 
-                placeholder="Scrivi un messaggio"
-                @keyup.13="sendMessage"
-                v-model="insertMessage">
-                <i class="fas fa-microphone"></i>
                 <div 
                 class="emoji-container"
                 v-if="isHidden"
                 >
-                    <ul>
+                    <ul class="type-name">
                         <li
-                        @click="addEmoji(index)"
-                        v-for="(emoticon, index) in emoji"
+                        :class=" typeIndex=== actualEmoji ? 'selected' : ''"
+                        @click="selectType(typeIndex)"
+                        v-for="(type, typeIndex) in emoji"                            
+                        >
+                        {{ type.type }}
+                        </li>
+                    </ul>
+                    <ul class="list">
+                        <li
+                        @click="addEmoji(emIndex)"
+                        v-for="(emoticon, emIndex) in emoji[actualEmoji].emojis"
                         >
                         {{ emoticon }}
                     </li>
                     </ul>
+                </div>
+                <div class="input-box">
+                    <i 
+                    class="far fa-smile"
+                    @click="showEmoji"
+                    ></i>
+                    <input type="text" 
+                    placeholder="Scrivi un messaggio"
+                    @keyup.13="sendMessage"
+                    v-model="insertMessage">
+                    <i class="fas fa-microphone"></i>
                 </div>
             </div>
     
