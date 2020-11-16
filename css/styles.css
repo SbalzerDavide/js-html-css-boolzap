@@ -360,9 +360,13 @@ main{
     height: 150px;
     padding: 10px 20px;
     background-color: #f3eeea;
-    overflow-y: auto;
 }
 
+.emoji-container .list{
+    height: 90px;
+    overflow-y: auto;
+
+}
 
 .main-footer .emoji-container li{
     display: inline-block;
@@ -372,9 +376,6 @@ main{
 .emoji-container .list li{
     font-size: 30px;
     margin: 0 5px;
-}
-
-.emoji-container .type-name{
 }
 
 .emoji-container .type-name li{
