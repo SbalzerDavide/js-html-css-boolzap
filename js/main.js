@@ -231,17 +231,18 @@ var app = new Vue({
             this.actualEmoji = index;
         },
         sendMessage(){
-            if (this.insertMessage.trim() != '')
-            this.contacts[this.actualIndex].messages.push(
-                {
-                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-                    message: this.insertMessage,
-                    status: 'sent'
-                }
-            );
+            if (this.insertMessage.trim() != ''){
+                this.contacts[this.actualIndex].messages.push(
+                    {
+                        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                        message: this.insertMessage,
+                        status: 'sent'
+                    }
+                    )
+                    setTimeout(this.botMessage, 1000);
+            };
             this.insertMessage = '';
             this.scrollToEnd();
-            setTimeout(this.botMessage, 1000);
         },
         botMessage(){
             this.contacts[this.actualIndex].messages.push(
