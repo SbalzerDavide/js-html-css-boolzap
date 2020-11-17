@@ -208,13 +208,15 @@ var app = new Vue({
         isHidden: false,
         insertMessage: '',
         inputSearch: '',
+        dateLastAccess: '',
     },
     created(){
-        // this.initialFunction();
+        this.lastAccess();    
     },
     methods: {
         takeIndex(index){
             this.actualIndex = index;
+            this.lastAccess();
         },
         showEmoji(){
             this.isHidden = !this.isHidden;
@@ -257,6 +259,7 @@ var app = new Vue({
                 }
             );
             this.scrollToEnd();
+            this.lastAccess();
         },
         search(){
             this.contacts.forEach(contact => {
@@ -265,6 +268,13 @@ var app = new Vue({
                     contact.visible = true;
                 };
             });
+        },
+        lastAccess(){
+            this.contacts[this.actualIndex].messages.forEach(message => {
+                if (message.status == 'received'){
+                    this.dateLastAccess = message.date;
+                }
+            })
         }
     },
 
