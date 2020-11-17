@@ -81,11 +81,16 @@
                 >
                     <img :src="('./img/avatar') + contacts[index].avatar + '.jpg'" alt="user">
                     <div class="user-name">
-                        <h4>
-                            {{ contacts[index].name }}
-                        </h4>
-                        <div class="last-message">
-                            {{ textlastMessages[index] }}...
+                        <div class="center">
+                            <h4>
+                                {{ contacts[index].name }}
+                            </h4>
+                            <div class="last-message">
+                                {{ textlastMessages[index] }}...
+                            </div>
+                        </div>
+                        <div class="right">
+                            {{ arrayLastaccess[index]}}
                         </div>
                     </div>
                 </div>
@@ -106,8 +111,7 @@
                             {{ contacts[actualIndex].name }}
                         </h4>
                         <small>
-                            {{ dateLastAccess }}
-                            <!-- {{ contacts[actualIndex].messages[(contacts[actualIndex].messages.length) -1].date }} -->
+                            {{ arrayLastaccess[actualIndex] }}
                         </small>
                     </div>
                 </div>

@@ -207,8 +207,26 @@ input:focus{
     transition: background .3s;
 }
 
+.contacts .contact .center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.contacts .contact .user-name{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
 .contacts .contact .last-message{
     display: inline-block;
+    font-size: 12px;
+    color: #b1b1b1;
+}
+
+.contacts .contact .user-name .right{
     font-size: 12px;
     color: #b1b1b1;
 }

@@ -208,7 +208,8 @@ var app = new Vue({
         isHidden: false,
         insertMessage: '',
         inputSearch: '',
-        dateLastAccess: '',
+        // dateLastAccess: '',
+        arrayLastaccess:[],
         textlastMessages: [],
     },
     created(){
@@ -216,12 +217,12 @@ var app = new Vue({
     },
     methods: {
         firstAccess(){
-            this.lastAccess(); 
+            // this.lastAccess(); 
             this.onlyReceived();   
         },
         takeIndex(index){
             this.actualIndex = index;
-            this.lastAccess();
+            this.onlyReceived();
         },
         showEmoji(){
             this.isHidden = !this.isHidden;
@@ -264,7 +265,7 @@ var app = new Vue({
                 }
             );
             this.scrollToEnd();
-            this.lastAccess();
+            // this.lastAccess();
             this.onlyReceived();
         },
         search(){
@@ -275,23 +276,30 @@ var app = new Vue({
                 };
             });
         },
-        lastAccess(){
-            this.contacts[this.actualIndex].messages.forEach(message => {
-                if (message.status == 'received'){
-                    this.dateLastAccess = message.date;
-                }
-            })
-        },
+        // lastAccess(){
+        //     this.contacts[this.actualIndex].messages.forEach(message => {
+        //         if (message.status == 'received'){
+        //             this.dateLastAccess = message.date;
+        //         }
+        //     })
+        // },
         onlyReceived(){
             this.textlastMessages = [];
+            this.arrayLastaccess = []; 
             this.contacts.forEach(contact => {
                 let message = contact.messages.filter(message =>{
                     if (message.status === 'received'){
                         return message;
                     };
                 });
-                this.textlastMessages.push(message[(message.length) - 1].message);
+                // this.arrayLastaccess.push(message[(message.length) - 1].date;
+                this.arrayLastaccess.push(message[(message.length) - 1].date);
+                this.textlastMessages.push(message[(message.length) - 1].message.slice(0,25));
+
             });
+            // this.textlastMessages.forEach(message => {
+            //     message.splice(2,2);
+            // })
         },
     },
 
