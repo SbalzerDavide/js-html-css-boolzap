@@ -209,11 +209,16 @@ var app = new Vue({
         insertMessage: '',
         inputSearch: '',
         dateLastAccess: '',
+        textlastMessages: [],
     },
     created(){
-        this.lastAccess();    
+        this.firstAccess();
     },
     methods: {
+        firstAccess(){
+            this.lastAccess(); 
+            this.onlyReceived();   
+        },
         takeIndex(index){
             this.actualIndex = index;
             this.lastAccess();
@@ -260,6 +265,7 @@ var app = new Vue({
             );
             this.scrollToEnd();
             this.lastAccess();
+            this.onlyReceived();
         },
         search(){
             this.contacts.forEach(contact => {
@@ -275,7 +281,18 @@ var app = new Vue({
                     this.dateLastAccess = message.date;
                 }
             })
-        }
+        },
+        onlyReceived(){
+            this.textlastMessages = [];
+            this.contacts.forEach(contact => {
+                let message = contact.messages.filter(message =>{
+                    if (message.status === 'received'){
+                        return message;
+                    };
+                });
+                this.textlastMessages.push(message[(message.length) - 1].message);
+            });
+        },
     },
 
 });

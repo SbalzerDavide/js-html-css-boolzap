@@ -207,6 +207,12 @@ input:focus{
     transition: background .3s;
 }
 
+.contacts .contact .last-message{
+    display: inline-block;
+    font-size: 12px;
+    color: #b1b1b1;
+}
+
 .contacts .contact.active{
     background-color: #dddddd;
 }
