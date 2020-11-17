@@ -51,7 +51,8 @@
             <!-- search -->
             <div class="search">
                 <div class="box">
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input 
+                    @keyup="search" v-model="inputSearch" type="text" placeholder="Cerca o inizia una nuova chat">
                     <div class="change-icon"></div>
                 </div>
             </div>
@@ -60,6 +61,7 @@
             <div class="contacts">
                 <div 
                 @click='takeIndex(index)'
+                v-show="item.visible === true"
                 class="contact"
                 :class=" index=== actualIndex ? 'active' : ''"
                 v-for='(item, index) in contacts'

@@ -207,6 +207,10 @@ var app = new Vue({
         actualEmoji: 0,
         isHidden: false,
         insertMessage: '',
+        inputSearch: '',
+    },
+    created(){
+        // this.initialFunction();
     },
     methods: {
         takeIndex(index){
@@ -238,9 +242,9 @@ var app = new Vue({
                         message: this.insertMessage,
                         status: 'sent'
                     }
-                    )
+                    );
                     setTimeout(this.botMessage, 1000);
-            };
+                };
             this.insertMessage = '';
             this.scrollToEnd();
         },
@@ -254,6 +258,14 @@ var app = new Vue({
             );
             this.scrollToEnd();
         },
+        search(){
+            this.contacts.forEach(contact => {
+                contact.visible = false;
+                if (contact.name.toLowerCase().includes(this.inputSearch.toLowerCase()) ){
+                    contact.visible = true;
+                };
+            });
+        }
     },
 
 });
