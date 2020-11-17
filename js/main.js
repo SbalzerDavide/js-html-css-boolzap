@@ -294,23 +294,13 @@ var app = new Vue({
                         return message;
                     };
                 });
-
-                if (message.length -1 != undefined){
+                if (message.length === 0){
+                    this.textlastMessages.push('Non ci sono messaggi');
+                    this.arrayLastaccess.push('');
+                } else{
                     this.arrayLastaccess.push(message[(message.length) - 1].date);
                     this.textlastMessages.push(message[(message.length) - 1].message.slice(0,25));
-                } else {
-                    this.textlastMessages.push('Non ci sono messaggi');
                 }
-
-                // if (message.message == [{}] ){
-                //     this.textlastMessages.push('Non ci sono messaggi');
-                //     console.log('primo');
-                    
-
-                // } else{
-                //     this.arrayLastaccess.push(message[(message.length) - 1].date);
-                //     this.textlastMessages.push(message[(message.length) - 1].message.slice(0,25));
-                // }
             });
         },
     },
