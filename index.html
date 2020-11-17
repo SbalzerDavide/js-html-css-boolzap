@@ -111,7 +111,7 @@
                             {{ contacts[actualIndex].name }}
                         </h4>
                         <small>
-                            {{ arrayLastaccess[actualIndex] }}
+                           Ultimo accesso {{ arrayLastaccess[actualIndex] }}
                         </small>
                     </div>
                 </div>
@@ -129,11 +129,30 @@
 
                 <!-- messages -->
                 <div
-                v-for="message in contacts[actualIndex].messages" 
+                v-for="(message, index) in contacts[actualIndex].messages" 
                 :class="[message.status,'message']"
                 >
                     <h2>{{ message.message }}</h2>
                     <div class="time">{{ message.date }}</div>
+                    <div class="menu-icon">
+                        <i class="fas fa-chevron-down"
+                        tabindex='0' 
+                        @click="showMenu(index)"></i>
+                        <div 
+                        class="box-menu"
+                        :class="message.status"
+                        v-show="index == actualMenu"
+                        v-if="isHiddenMenu"
+                        >
+                            <ul>
+                                <li>RISPONDI</li>
+                                <li>INOLTRA MESSAGGIO</li>
+                                <li>MESSAGGIO IMPORTANTE</li>
+                                <li @click="delateMessage(index)">ELIMINA MESSAGGIO</li>
+                            </ul>
+
+                        </div>
+                    </div>
                 </div>
 
             </div>

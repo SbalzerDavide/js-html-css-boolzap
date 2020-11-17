@@ -205,10 +205,11 @@ var app = new Vue({
         ],
         actualIndex:0,
         actualEmoji: 0,
+        actualMenu: 0,
         isHidden: false,
+        isHiddenMenu: false,
         insertMessage: '',
         inputSearch: '',
-        // dateLastAccess: '',
         arrayLastaccess:[],
         textlastMessages: [],
     },
@@ -217,7 +218,6 @@ var app = new Vue({
     },
     methods: {
         firstAccess(){
-            // this.lastAccess(); 
             this.onlyReceived();   
         },
         takeIndex(index){
@@ -227,6 +227,16 @@ var app = new Vue({
         showEmoji(){
             this.isHidden = !this.isHidden;
             this.scrollToEnd();
+        },
+        showMenu(index){
+            this.actualMenu = index;
+            this.isHiddenMenu = !this.isHiddenMenu;
+            this.scrollToEnd();
+        },
+        delateMessage(index){
+            this.contacts[this.actualIndex].messages.splice(index,1);
+            this.isHiddenMenu = !this.isHiddenMenu;
+            this.onlyReceived();
         },
         scrollToEnd(){    
             setTimeout(() =>{
@@ -265,7 +275,6 @@ var app = new Vue({
                 }
             );
             this.scrollToEnd();
-            // this.lastAccess();
             this.onlyReceived();
         },
         search(){
@@ -276,13 +285,6 @@ var app = new Vue({
                 };
             });
         },
-        // lastAccess(){
-        //     this.contacts[this.actualIndex].messages.forEach(message => {
-        //         if (message.status == 'received'){
-        //             this.dateLastAccess = message.date;
-        //         }
-        //     })
-        // },
         onlyReceived(){
             this.textlastMessages = [];
             this.arrayLastaccess = []; 
@@ -292,14 +294,24 @@ var app = new Vue({
                         return message;
                     };
                 });
-                // this.arrayLastaccess.push(message[(message.length) - 1].date;
-                this.arrayLastaccess.push(message[(message.length) - 1].date);
-                this.textlastMessages.push(message[(message.length) - 1].message.slice(0,25));
 
+                if (message.length -1 != undefined){
+                    this.arrayLastaccess.push(message[(message.length) - 1].date);
+                    this.textlastMessages.push(message[(message.length) - 1].message.slice(0,25));
+                } else {
+                    this.textlastMessages.push('Non ci sono messaggi');
+                }
+
+                // if (message.message == [{}] ){
+                //     this.textlastMessages.push('Non ci sono messaggi');
+                //     console.log('primo');
+                    
+
+                // } else{
+                //     this.arrayLastaccess.push(message[(message.length) - 1].date);
+                //     this.textlastMessages.push(message[(message.length) - 1].message.slice(0,25));
+                // }
             });
-            // this.textlastMessages.forEach(message => {
-            //     message.splice(2,2);
-            // })
         },
     },
 
