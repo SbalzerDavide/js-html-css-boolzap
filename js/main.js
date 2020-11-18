@@ -206,9 +206,10 @@ var app = new Vue({
         actualIndex:0,
         actualEmoji: 0,
         actualMenu: 0,
-        actualImportant: 0,
+        indexQuote: 0,
         isHidden: false,
         isHiddenMenu: false,
+        isHiddenQuote: false,
         insertMessage: '',
         inputSearch: '',
         arrayLastaccess:[],
@@ -231,6 +232,8 @@ var app = new Vue({
         takeIndex(index){
             this.actualIndex = index;
             this.onlyReceived();
+            this.isHiddenQuote = false;
+
         },
         /**
          * at click show and hidden emoji box
@@ -260,6 +263,13 @@ var app = new Vue({
         setImportant(index){
             this.contacts[this.actualIndex].messages[index].important = !this.contacts[this.actualIndex].messages[index].important;
             this.isHiddenMenu = !this.isHiddenMenu;
+        },
+        quoteMessage(index){
+            this.indexQuote = index;
+            this.isHiddenQuote = true;
+            this.isHiddenMenu = !this.isHiddenMenu;
+
+
         },
         /**
          * scroll main content to the and

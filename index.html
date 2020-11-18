@@ -150,9 +150,10 @@
                         v-if="isHiddenMenu"
                         >
                             <ul>
-                                <li>RISPONDI</li>
+                                <li @click="quoteMessage">RISPONDI</li>
                                 <li>INOLTRA MESSAGGIO</li>
-                                <li @click="setImportant(index)">MESSAGGIO IMPORTANTE</li>
+                                <li @click="setImportant(index)">MESSAGGIO <span v-show="message.important == true">NON</span> 
+                                IMPORTANTE</li>
                                 <li @click="delateMessage(index)">ELIMINA MESSAGGIO</li>
                             </ul>
                         </div>
@@ -186,6 +187,14 @@
                         {{ emoticon }}
                     </li>
                     </ul>
+                </div>
+
+                <div class="quote" v-if="isHiddenQuote">
+                    <div class="message">
+                        <h2>{{ contacts[actualIndex].name}}</h2>
+                        <p>{{ contacts[actualIndex].messages[actualMenu].message}}</p>
+                    </div>
+                    <i class="fas fa-times" @click="isHiddenQuote = !isHiddenQuote"></i>
                 </div>
 
                 <!-- box input -->
