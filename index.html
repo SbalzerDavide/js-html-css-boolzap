@@ -134,7 +134,10 @@
                 :class="[message.status,'message']"
                 >
                     <h2>{{ message.message }}</h2>
-                    <div class="time">{{ message.date }}</div>
+                    <div class="time">
+                        <i class="fas fa-star" v-show="message.important == true"></i>
+                        {{ message.date }}
+                    </div>
 
                     <!-- message menu -->
                     <div class="menu-icon">
@@ -142,15 +145,14 @@
                         tabindex='0' 
                         @click="showMenu(index)"></i>
                         <div 
-                        class="box-menu"
-                        :class="message.status"
+                        :class="`box-menu ${message.status}`"
                         v-show="index == actualMenu"
                         v-if="isHiddenMenu"
                         >
                             <ul>
                                 <li>RISPONDI</li>
                                 <li>INOLTRA MESSAGGIO</li>
-                                <li>MESSAGGIO IMPORTANTE</li>
+                                <li @click="setImportant(index)">MESSAGGIO IMPORTANTE</li>
                                 <li @click="delateMessage(index)">ELIMINA MESSAGGIO</li>
                             </ul>
                         </div>

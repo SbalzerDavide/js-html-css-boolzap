@@ -206,6 +206,7 @@ var app = new Vue({
         actualIndex:0,
         actualEmoji: 0,
         actualMenu: 0,
+        actualImportant: 0,
         isHidden: false,
         isHiddenMenu: false,
         insertMessage: '',
@@ -255,6 +256,10 @@ var app = new Vue({
             this.contacts[this.actualIndex].messages.splice(index,1);
             this.isHiddenMenu = !this.isHiddenMenu;
             this.onlyReceived();
+        },
+        setImportant(index){
+            this.contacts[this.actualIndex].messages[index].important = !this.contacts[this.actualIndex].messages[index].important;
+            this.isHiddenMenu = !this.isHiddenMenu;
         },
         /**
          * scroll main content to the and
