@@ -131,14 +131,12 @@ input:focus{
     padding: 5px;
 }
 
-
 .search .box{
     display: flex;
     flex-direction: row-reverse;
     padding: 8px 20px;
     background-color: #fff;
 }
-
 
 .search .box .change-icon{
     position: relative;
@@ -171,7 +169,6 @@ input:focus{
     opacity: 0;
     transition: transform .3s,
                 opacity .3s;
-
 }
 
 .search .box input:focus + .change-icon::after{
@@ -184,12 +181,10 @@ input:focus{
     transform: translate( -50%, -50% ) rotate(0)
 }
 
-
 .search .box input{
     width: 85%;
     border: none;
 }
-
 
 /* contact */
 .contacts{
@@ -239,7 +234,6 @@ input:focus{
     background-color: #dddddd;
 }
 
-
 .contacts .contact:hover{
     background-color: #f5f5f5;
 }
@@ -248,7 +242,6 @@ input:focus{
     height: 40px;
     border-radius: 50%;
     margin-right: 20px;
-
 }
 
 /********************************* main *****************************/
@@ -354,8 +347,8 @@ main{
 .main-content .message .menu-icon i:focus{
     opacity: 1;
     transform: translateX(-8px);
+    outline: none;
 }
-
 
 .message .menu-icon .box-menu{
     position: absolute;
@@ -377,16 +370,6 @@ main{
     right: 20px;
 }
 
-
-/* .message .menu-icon .box-menu ul{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */
-
-
-
 .message .menu-icon .box-menu li{
     width: 100%;
     padding: 10px 10px;
@@ -399,8 +382,6 @@ main{
     background-color: #f5f5f5;
 }
 
-
-
 /* main footer */
 .main-footer{
     display: flex;
@@ -408,7 +389,6 @@ main{
 }
 
 .main-footer .input-box{
-    /* position: relative; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -436,7 +416,6 @@ main{
     font-size: 14px;
 }
 
-
 /* emoji */
 .main-footer .emoji-container{
     width: 100%;
@@ -448,7 +427,6 @@ main{
 .emoji-container .list{
     height: 90px;
     overflow-y: auto;
-
 }
 
 .main-footer .emoji-container li{

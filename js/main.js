@@ -217,41 +217,73 @@ var app = new Vue({
         this.firstAccess();
     },
     methods: {
+        /**
+         * functions play at reload page
+         */
         firstAccess(){
             this.onlyReceived();   
         },
+        /**
+         * take index of selected contanct 
+         * @param {*} index index
+         */
         takeIndex(index){
             this.actualIndex = index;
             this.onlyReceived();
         },
+        /**
+         * at click show and hidden emoji box
+         */
         showEmoji(){
             this.isHidden = !this.isHidden;
             this.scrollToEnd();
         },
+        /**
+         * at click over a message show the menu
+         * @param {} index index of clicked message
+         */
         showMenu(index){
             this.actualMenu = index;
             this.isHiddenMenu = !this.isHiddenMenu;
             this.scrollToEnd();
         },
+        /**
+         * delate relative message
+         * @param {} index index of clicked message
+         */
         delateMessage(index){
             this.contacts[this.actualIndex].messages.splice(index,1);
             this.isHiddenMenu = !this.isHiddenMenu;
             this.onlyReceived();
         },
+        /**
+         * scroll main content to the and
+         */
         scrollToEnd(){    
             setTimeout(() =>{
                 this.$refs.container.scrollTop = this.$refs.container.scrollHeight ;
             },20)
         },
+        /**
+         * put clicked emoji in input text
+         * @param {} index index of clicked emoji
+         */
         addEmoji(index){
             let first = this.insertMessage;
             let second = this.emoji[this.actualEmoji].emojis[index];
             var res = first.concat(second);
             this.insertMessage = res;
         },
+        /**
+         * select category of selected emoji
+         * @param {*} index index of category
+         */
         selectType(index){
             this.actualEmoji = index;
         },
+        /**
+         * create a new object in array of message
+         */
         sendMessage(){
             if (this.insertMessage.trim() != ''){
                 this.contacts[this.actualIndex].messages.push(
@@ -266,6 +298,9 @@ var app = new Vue({
             this.insertMessage = '';
             this.scrollToEnd();
         },
+        /**
+         * send the bot
+         */
         botMessage(){
             this.contacts[this.actualIndex].messages.push(
                 {
@@ -277,6 +312,9 @@ var app = new Vue({
             this.scrollToEnd();
             this.onlyReceived();
         },
+        /**
+         * search inside name contacts
+         */
         search(){
             this.contacts.forEach(contact => {
                 contact.visible = false;
@@ -285,6 +323,9 @@ var app = new Vue({
                 };
             });
         },
+        /**
+         * filter only received message and set information of the last
+         */
         onlyReceived(){
             this.textlastMessages = [];
             this.arrayLastaccess = []; 
