@@ -214,6 +214,7 @@ var app = new Vue({
         inputSearch: '',
         arrayLastaccess:[],
         textlastMessages: [],
+        insertQuote: '',
     },
     created(){
         this.firstAccess();
@@ -269,6 +270,11 @@ var app = new Vue({
             this.isHiddenQuote = true;
             this.isHiddenMenu = !this.isHiddenMenu;
 
+            console.log(this.contacts[this.actualIndex].messages[this.indexQuote].message);
+            console.log(this.indexQuote);
+
+            // this.contacts[actualIndex].messages[indexQuote].quoted =
+
 
         },
         /**
@@ -300,18 +306,26 @@ var app = new Vue({
          * create a new object in array of message
          */
         sendMessage(){
+            if (this.isHiddenQuote == true){
+                this.insertQuote = this.contacts[this.actualIndex].messages[this.indexQuote].message; 
+            };
+
             if (this.insertMessage.trim() != ''){
                 this.contacts[this.actualIndex].messages.push(
                     {
                         date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                         message: this.insertMessage,
-                        status: 'sent'
+                        status: 'sent',
+                        quote: this.insertQuote,
                     }
                     );
                     setTimeout(this.botMessage, 1000);
                 };
             this.insertMessage = '';
             this.scrollToEnd();
+
+            this.isHiddenQuote = false;
+
         },
         /**
          * send the bot
@@ -355,10 +369,18 @@ var app = new Vue({
                     this.arrayLastaccess.push('');
                 } else{
                     this.arrayLastaccess.push(message[(message.length) - 1].date);
-                    this.textlastMessages.push(message[(message.length) - 1].message.slice(0,25));
+                    this.textlastMessages.push(message[(message.length) - 1].message.slice(0,20));
                 }
             });
         },
+        changeName(){
+            // return this.contacts[this.actualIndex].messages[this.indexQuote].status === 'sent' ? 'tu' : this.contacts[this.actualIndex].name;
+            if ( this.contacts[this.actualIndex].messages[this.indexQuote].status === 'sent' ) {
+                return 'tu';
+            } else {
+                return this.contacts[this.actualIndex].name
+            };
+        }
     },
 
 });

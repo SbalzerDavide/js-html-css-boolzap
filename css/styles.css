@@ -339,6 +339,19 @@ main{
     color: #b1b1b1;
 }
 
+.message .quote-message{
+    background-color: rgba(0,0,0,.1);
+    padding: 10px;
+    margin-bottom: 5px;
+    border-left: 3px solid #68ca9a;
+    border-radius: 3px;
+}
+
+.message .quote-message h2{
+    margin-bottom: 5px;
+}
+
+
 /* icon menu */
 .message .menu-icon i{
     position: absolute;

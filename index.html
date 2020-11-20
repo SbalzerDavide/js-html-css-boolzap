@@ -13,10 +13,10 @@
 
     <!-- js -->
     <!-- production version -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
 
     <!-- development version -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 
     <!-- css -->
     <link rel="stylesheet" href="./css/styles.css">
@@ -133,6 +133,17 @@
                 v-for="(message, index) in contacts[actualIndex].messages" 
                 :class="[message.status,'message']"
                 >
+                    <div class="quote-message"
+                    v-show="message.quote != undefined && message.quote != ''"
+                    >
+                    <!-- <h2>{{ contacts[actualIndex].name }}</h2> -->
+                    <!-- <h2>{{ contacts[actualIndex].messages[indexQuote].status === 'sent' ? 'tu' : message.name }}</h2> -->
+                    <h2>{{ changeName() }}</h2>
+                    <!-- <h2>`${contacts[actualIndex].messages[indexQuote].status === 'sent'} ? 'tu' : ${message.name}`</h2> -->
+                    <!-- <h2>{{ contacts[actualIndex].messages[indexQuote].status === 'sent' ? 'tu' : 'ciao' }}</h2> -->
+
+                    <p>{{ message.quote }}</p>
+                </div>
                     <h2>{{ message.message }}</h2>
                     <div class="time">
                         <i class="fas fa-star" v-show="message.important == true"></i>
@@ -150,7 +161,7 @@
                         v-if="isHiddenMenu"
                         >
                             <ul>
-                                <li @click="quoteMessage">RISPONDI</li>
+                                <li @click="quoteMessage(index)">RISPONDI</li>
                                 <li>INOLTRA MESSAGGIO</li>
                                 <li @click="setImportant(index)">MESSAGGIO <span v-show="message.important == true">NON</span> 
                                 IMPORTANTE</li>
@@ -188,7 +199,8 @@
                     </li>
                     </ul>
                 </div>
-
+                
+                <!-- quote -->
                 <div class="quote" v-if="isHiddenQuote">
                     <div class="message">
                         <h2>{{ contacts[actualIndex].name}}</h2>
