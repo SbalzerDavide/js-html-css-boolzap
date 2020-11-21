@@ -382,9 +382,7 @@ var app = new Vue({
                     this.arrayLastaccess.push(previewMessage.date);
 
                     this.textlastMessages.push(previewMessage.message);
-                    // this.textlastMessages.push(message[(message.length) - 1].message.slice(0,20));
                 }
-                console.log(previewMessage.message);
             });
         },
     },
