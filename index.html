@@ -13,10 +13,10 @@
 
     <!-- js -->
     <!-- production version -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
     <!-- development version -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> -->
 
     <!-- css -->
     <link rel="stylesheet" href="./css/styles.css">
@@ -66,7 +66,11 @@
             <div class="search">
                 <div class="box">
                     <input 
-                    @keyup="search" v-model="inputSearch" type="text" placeholder="Cerca o inizia una nuova chat">
+                        @keyup="search" 
+                        v-model="inputSearch" 
+                        type="text" 
+                        placeholder="Cerca o inizia una nuova chat"
+                    >
                     <div class="change-icon"></div>
                 </div>
             </div>
@@ -74,11 +78,11 @@
             <!-- contancts -->
             <div class="contacts">
                 <div 
-                @click='takeIndex(index)'
-                v-show="item.visible === true"
-                class="contact"
-                :class=" index=== actualIndex ? 'active' : ''"
-                v-for='(item, index) in contacts'
+                    @click='takeIndex(index)'
+                    v-show="item.visible === true"
+                    class="contact"
+                    :class=" index=== actualIndex ? 'active' : ''"
+                    v-for='(item, index) in contacts'
                 >
                     <img :src="('./img/avatar') + contacts[index].avatar + '.jpg'" alt="user">
                     <div class="user-name">
@@ -87,7 +91,7 @@
                                 {{ contacts[index].name }}
                             </h4>
                             <div class="last-message">
-                                {{ textlastMessages[index] }}...
+                                {{ textlastMessages[index] }}
                             </div>
                         </div>
                         <div class="right">
@@ -130,18 +134,14 @@
 
                 <!-- messages -->
                 <div
-                v-for="(message, index) in contacts[actualIndex].messages" 
-                :class="[message.status,'message']"
+                    v-for="(message, index) in contacts[actualIndex].messages" 
+                    :class="[message.status,'message']"
                 >
-                    <div class="quote-message"
-                    v-show="message.quote != undefined && message.quote != ''"
+                    <div 
+                        class="quote-message"
+                        v-show="message.quote != undefined && message.quote != ''"
                     >
-                    <!-- <h2>{{ contacts[actualIndex].name }}</h2> -->
-                    <!-- <h2>{{ contacts[actualIndex].messages[indexQuote].status === 'sent' ? 'tu' : message.name }}</h2> -->
-                    <h2>{{ changeName() }}</h2>
-                    <!-- <h2>`${contacts[actualIndex].messages[indexQuote].status === 'sent'} ? 'tu' : ${message.name}`</h2> -->
-                    <!-- <h2>{{ contacts[actualIndex].messages[indexQuote].status === 'sent' ? 'tu' : 'ciao' }}</h2> -->
-
+                    <h2>{{ message.authorQuote }}</h2>
                     <p>{{ message.quote }}</p>
                 </div>
                     <h2>{{ message.message }}</h2>
@@ -152,13 +152,15 @@
 
                     <!-- message menu -->
                     <div class="menu-icon">
-                        <i class="fas fa-chevron-down"
-                        tabindex='0' 
-                        @click="showMenu(index)"></i>
+                        <i 
+                            class="fas fa-chevron-down"
+                            tabindex='0' 
+                            @click="showMenu(index)"
+                        ></i>
                         <div 
-                        :class="`box-menu ${message.status}`"
-                        v-show="index == actualMenu"
-                        v-if="isHiddenMenu"
+                            :class="`box-menu ${message.status}`"
+                            v-show="index == actualMenu"
+                            v-if="isHiddenMenu"
                         >
                             <ul>
                                 <li @click="quoteMessage(index)">RISPONDI</li>
@@ -178,22 +180,22 @@
 
                 <!-- container emoji -->
                 <div 
-                class="emoji-container"
-                v-if="isHidden"
+                    class="emoji-container"
+                    v-if="isHidden"
                 >
                     <ul class="type-name">
                         <li
-                        :class=" typeIndex=== actualEmoji ? 'selected' : ''"
-                        @click="selectType(typeIndex)"
-                        v-for="(type, typeIndex) in emoji"                            
+                            :class=" typeIndex=== actualEmoji ? 'selected' : ''"
+                            @click="selectType(typeIndex)"
+                            v-for="(type, typeIndex) in emoji"                            
                         >
                         {{ type.type }}
                         </li>
                     </ul>
                     <ul class="list">
                         <li
-                        @click="addEmoji(emIndex)"
-                        v-for="(emoticon, emIndex) in emoji[actualEmoji].emojis"
+                            @click="addEmoji(emIndex)"
+                            v-for="(emoticon, emIndex) in emoji[actualEmoji].emojis"
                         >
                         {{ emoticon }}
                     </li>
@@ -212,13 +214,16 @@
                 <!-- box input -->
                 <div class="input-box">
                     <i 
-                    class="far fa-smile"
-                    @click="showEmoji"
-                    ></i>
-                    <input type="text" 
-                    placeholder="Scrivi un messaggio"
-                    @keyup.13="sendMessage"
-                    v-model="insertMessage">
+                        class="far fa-smile"
+                        @click="showEmoji"
+                    >
+                    </i>
+                    <input 
+                        type="text" 
+                        placeholder="Scrivi un messaggio"
+                        @keyup.13="sendMessage"
+                        v-model="insertMessage"
+                    >
                     <i class="fas fa-microphone"></i>
                 </div>
             </div>
