@@ -4,12 +4,12 @@
 var app = new Vue({
     el: '#app',
     data: {
-        // nostro account
+        // our occount
         user: {
             name: 'Nome Utente',
             avatar: '_io'
         },
-        // Elenco contatti
+        // contacts list
         contacts: [
             {
                 name: 'Michele',
@@ -203,18 +203,22 @@ var app = new Vue({
             }
 
         ],
+        //index selector
         actualIndex:0,
         actualEmoji: 0,
         actualMenu: 0,
         indexQuote: 0,
+        //show hidden
         isHidden: false,
         isHiddenMenu: false,
         isHiddenQuote: false,
+        //other var
         insertMessage: '',
         inputSearch: '',
         arrayLastaccess:[],
         textlastMessages: [],
         insertQuote: '',
+        author: '',
     },
     created(){
         this.firstAccess();
@@ -234,6 +238,9 @@ var app = new Vue({
             this.actualIndex = index;
             this.onlyReceived();
             this.isHiddenQuote = false;
+
+            //fix error (... .message[this.indexQuote] is undefined) when change contact after make a quote
+            this.indexQuote = 0;
 
         },
         /**
@@ -269,13 +276,6 @@ var app = new Vue({
             this.indexQuote = index;
             this.isHiddenQuote = true;
             this.isHiddenMenu = !this.isHiddenMenu;
-
-            console.log(this.contacts[this.actualIndex].messages[this.indexQuote].message);
-            console.log(this.indexQuote);
-
-            // this.contacts[actualIndex].messages[indexQuote].quoted =
-
-
         },
         /**
          * scroll main content to the and
@@ -306,10 +306,17 @@ var app = new Vue({
          * create a new object in array of message
          */
         sendMessage(){
+            // all condition for add a quote in the new message
             if (this.isHiddenQuote == true){
                 this.insertQuote = this.contacts[this.actualIndex].messages[this.indexQuote].message; 
-            };
 
+                // add author quote in message object is the only solution I find for not change the author every time I click to open the message menu 
+                if (this.contacts[this.actualIndex].messages[this.indexQuote].status == "sent"){
+                    this.author = 'tu';
+                } else {
+                    this.author = this.contacts[this.actualIndex].name;
+                };
+            };
             if (this.insertMessage.trim() != ''){
                 this.contacts[this.actualIndex].messages.push(
                     {
@@ -317,15 +324,15 @@ var app = new Vue({
                         message: this.insertMessage,
                         status: 'sent',
                         quote: this.insertQuote,
+                        authorQuote: this.author,
                     }
                     );
                     setTimeout(this.botMessage, 1000);
                 };
             this.insertMessage = '';
             this.scrollToEnd();
-
+            this.insertQuote = '';
             this.isHiddenQuote = false;
-
         },
         /**
          * send the bot
@@ -364,23 +371,22 @@ var app = new Vue({
                         return message;
                     };
                 });
+                let previewMessage = message[(message.length) - 1];
                 if (message.length === 0){
                     this.textlastMessages.push('Non ci sono messaggi');
                     this.arrayLastaccess.push('');
                 } else{
-                    this.arrayLastaccess.push(message[(message.length) - 1].date);
-                    this.textlastMessages.push(message[(message.length) - 1].message.slice(0,20));
+                    if (previewMessage.message.length > 19){
+                        previewMessage.message = previewMessage.message.slice(0,20).concat('...');
+                    };  
+                    this.arrayLastaccess.push(previewMessage.date);
+
+                    this.textlastMessages.push(previewMessage.message);
+                    // this.textlastMessages.push(message[(message.length) - 1].message.slice(0,20));
                 }
+                console.log(previewMessage.message);
             });
         },
-        changeName(){
-            // return this.contacts[this.actualIndex].messages[this.indexQuote].status === 'sent' ? 'tu' : this.contacts[this.actualIndex].name;
-            if ( this.contacts[this.actualIndex].messages[this.indexQuote].status === 'sent' ) {
-                return 'tu';
-            } else {
-                return this.contacts[this.actualIndex].name
-            };
-        }
     },
 
 });
